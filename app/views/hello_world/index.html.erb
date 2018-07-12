@@ -1,0 +1,258 @@
+<% if !user_signed_in? %>
+  <!-- user not signed in, delete all redirect and default status -->
+  <script>
+    delete localStorage["login_redirect"];
+    delete localStorage["pro_login_redirect"];
+    delete localStorage["default_check_chapter"];
+  </script>
+<% elsif current_user.has_role? :pro_user %>
+  <!-- user signed in, and is the pro user -->
+  <script>
+    var redirectUrl = localStorage["pro_login_redirect"]; if (redirectUrl !== undefined) {
+      window.location = redirectUrl;
+      // delete all redirect and default status
+      delete localStorage["login_redirect"];
+      delete localStorage["pro_login_redirect"];
+      delete localStorage["default_check_chapter"];
+    } else {
+      redirectUrl = localStorage["login_redirect"];
+      if (redirectUrl !== undefined) {
+        window.location = redirectUrl;
+        delete localStorage["login_redirect"];
+      } else {
+        delete localStorage["default_check_chapter"];
+      }
+    }
+  </script>
+<% else %>
+  <script>
+    delete localStorage["pro_login_redirect"];
+    var redirectUrl = localStorage["login_redirect"];
+    if (redirectUrl !== undefined) {
+      window.location = redirectUrl;
+      delete localStorage["login_redirect"];
+    } else {
+      delete localStorage["default_check_chapter"];
+    }
+  </script>
+<% end %>
+
+<div class="jumbotron vertical-center">
+  <div class="container text-center">
+    <h1>CoreForex</h1>
+    <p>Learn to trade like the banks</p>
+    <p><a class="btn get-started-btn btn-lg" href="#topics" role="button">Get started &raquo;</a></p>
+  </div>
+</div>
+
+<div>
+
+  <div class="info-section">
+
+
+    <div class="row">
+      <div class="container">
+        <div class="col-md-4 text-center">
+          <h2 class="promo-heading">Free.</h2>
+          <p class="promo-body">All of the written content is available 100% <strong>FREE</strong> of charge, forever. </p>
+        </div>
+        <div class="col-md-4 text-center">
+          <h2 class="promo-heading">Simple.</h2>
+          <p class="promo-body">No more confusing MACD's & RSI's designed to keep you in the rat race. </p>
+        </div>
+        <div class="col-md-4 text-center">
+          <h2 class="promo-heading">By traders, for traders.</h2>
+          <p class="promo-body">Technique shown here is used by millions accross the world to trade consistently and profitably. </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4">
+        <% if !current_user %> 
+          <% if cookies[:saved_subscriber] %>
+          <% else %> 
+            <h3 class="text-center"><strong> Join our FREE <a href="https://www.slack.com" target="_blank">Slack</a> group!</strong></h3>
+      <%= form_for @subscriber, :html => {:class => "form-horizontal center"} do |f| %> 
+            <div class="input-group">
+ <%= f.email_field :email, class: "form-control", placeholder: "super-trader@awesome.com" %>
+            <span class="input-group-btn">
+ <%= f.submit "Add me!", class: "btn btn-primary" %> 
+            </span>
+        </div><!-- /input-group -->
+      <% end %>  
+    <% end %> 
+    <% end %> 
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row --> 
+
+    <div class="row">
+      <div class="container testimonials-box">
+
+        <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
+          <div class="carousel-inner text-center">
+            <div class="item quote active">
+              <h3> "This information has changed my thoughts, my trading, and my life."</h3>
+              <p class="promo-body">  -Terrance W. </p>
+            </div>
+            <div class="item quote">
+              <h3> "These are super simple, yet extremely powerful, concepts that can turn anyone's trading around."</h3>
+              <p class="promo-body">  -Margaret L. </p>
+            </div>
+            <div class="item quote">
+              <h3> "If you want to catch those big moves you see on your charts TAKE THE PRO COURSE!"</h3>
+              <p class="promo-body">  -Carlos M. </p>
+            </div>
+            <div class="item quote">
+              <h3> "No other site offers anything nearly as awesome as information provided here."</h3>
+              <p class="promo-body">  -Eldad O. </p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container" id="topics">
+
+    <div class="row">
+
+      <h3 class="text-center" id="choose-a-topic"> Choose a topic. <strong>Start learning.</strong> </h3>
+      <h3>Beginner</h3>
+      <div class="card-flex">
+        <div class=" topic-card col-md-4">
+          <h2>The Great Deception</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/d3mlE7uhX8KFgEmY/source.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/the-great-deception" role="button">Open </a></p>
+        </div>
+
+        <!-- banks -->
+        <div class=" topic-card col-md-4">
+          <h2>Mega Banks</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/M49pHLnIqvA08/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/mega-banks" role="button">Open </a></p>
+        </div>
+        <!-- banks -->
+
+        <div class=" topic-card col-md-4">
+          <h2>Liquidity</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/l0HlDDyxBfSaPpU88/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/liquidity" role="button">Open </a></p>
+        </div>
+
+      </div>
+      <div class="card-flex">
+        <div class=" topic-card col-md-4">
+          <h2>Stop orders</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/jUSrFvui8Pfpe/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/stop-loss" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Candlesticks: Basics</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/R8o0vLWY4nJCg/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/candlestick-basics" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Candle Formations</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/l0HlU43KnuZmrDefK/source.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/candlestick-formations" role="button">Open </a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <h3>Intermediate</h3>
+      <div class="card-flex">
+        <div class=" topic-card col-md-4">
+          <h2>Manipulation Phases</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/FMm4zj70xJoju/source.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/manipulation-phases" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Sessions</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/3oz8xBmTULwn1QSNgI/source.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/sessions" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Levels</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/l4KibK3JwaVo0CjDO/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/levels" role="button">Open </a></p>
+        </div>
+
+      </div>
+      <div class="card-flex">
+        <div class=" topic-card col-md-4">
+          <h2>Pullbacks</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/eLFr3gpGFAiWY/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/pullbacks" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Setups</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/setups" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Risk:Reward</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/l0Ex6kAKAoFRsFh6M/source.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/risk-reward" role="button">Open </a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <h3>Advanced</h3>
+      <div class="card-flex">
+        <div class=" topic-card col-md-4">
+          <h2>Advanced Setups</h2>
+          <a href="<%= (user_signed_in? && current_user.has_role?(:pro_user)) ? '#' : '/pro' %>"><p class="pro-subheading">PRO</p></a>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/26ufe34jLiGEOqyM8/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/advanced-setups" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Psychology</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/1gnyBIqHTRi3m/source.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/psychology" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Trading the news</h2>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/lXiRLb0xFzmreM8k8/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/trading-the-news" role="button">Open </a></p>
+        </div>
+
+      </div>
+      <div class="card-flex">
+        <div class=" topic-card col-md-4">
+          <h2>Advanced Level Choosing</h2>
+          <a href="<%= (user_signed_in? && current_user.has_role?(:pro_user)) ? '#' : '/pro' %>"><p class="pro-subheading">PRO</p></a>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/3oEduY8fATnt6yVXQA/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/advanced-levels" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>The Big Pippin Method</h2>
+          <a href="<%= (user_signed_in? && current_user.has_role?(:pro_user)) ? '#' : '/pro' %>"><p class="pro-subheading">PRO</p></a>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/YTRUPHI7fXK6s/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/big-pippin" role="button">Open </a></p>
+        </div>
+        <div class=" topic-card col-md-4">
+          <h2>Trading EUR/GBP/JPY Pairs</h2>
+          <a href="<%= (user_signed_in? && current_user.has_role?(:pro_user)) ? '#' : '/pro' %>"><p class="pro-subheading">PRO</p></a>
+          <img className="img-responsive" height="270" src="https://media.giphy.com/media/ALLs4BZ5XEBoc/giphy.gif" alt="Hi :)" />
+          <p><a class="btn btn-default get-started" href="/eur-gbp-tips" role="button">Open </a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <h2>And more coming soon! <span class="tell-us"><a href="#email-info">Tell us what you want to learn  </a></span> </h2>
+
+      <p id="email-info"> If you have any comments, questions, concerns, or want to recommend a topic please contact us at hello@forexfax.com </p>
+    </div>
+    <br></br>
+
+  </div>
+</div>

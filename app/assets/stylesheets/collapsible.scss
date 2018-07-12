@@ -1,0 +1,67 @@
+@import "variables.scss"; 
+
+.Collapsible {
+  font-family: 'Lato', sans-serif;
+  color: 000; 
+  font-size: 30px; 
+  font-weight: bold; 
+  border-left: 25px solid $primary-color;
+  padding: 25px;
+  border-top: 1px solid #e9f0f3;
+  margin: 0px; 
+  display:flex; 
+  flex-direction:column;
+  a{
+    .next-chapter{
+      color: $primary-color;
+    }
+  }
+  &:hover{
+   cursor: pointer; 
+  }
+}
+
+.Collapsible__contentInner {
+  padding: 10px;
+border-top: 0; }
+
+.Collapsible__contentInner p {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  font-weight:300;  
+line-height: 20px; }
+
+.inner-list{
+  font-family: 'Lato', sans-serif;
+  font-weight:300;  
+  font-size: 18px;
+}
+
+.Collapsible__contentInner p:last-child {
+margin-bottom: 0; }
+
+
+.Collapsible__trigger {
+  display: block;
+  text-decoration: none;
+  position: relative;
+  padding: 10px;
+  &:hover{
+    text-decoration: underline; 
+  }
+}
+
+.Collapsible__trigger:after {
+  font-family: 'FontAwesome';
+  content: '\f107';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+transition: transform 300ms; 
+}
+
+.Collapsible__trigger.is-open:after {
+transform: rotateZ(180deg); }
+

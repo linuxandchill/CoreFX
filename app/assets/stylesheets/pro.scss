@@ -1,0 +1,141 @@
+@import 'variables.scss';
+
+.pro-container{
+  padding-top: 60px;
+  height: 100vh;
+  color: white;
+  background: #00c6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
+  .pro-container{
+    padding-top: 60px;
+    height: 100%;
+    color: white;
+    background: #00c6ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+}
+
+.pro-box{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Lato', sans-serif;
+  justify-content: center;
+  color: #555;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.25);
+  background: white;
+  margin: 20px 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  ul{
+    text-align: left;
+    max-width: 350px;
+    margin: 0 auto 0 auto;
+    color: #777;
+    li{
+      font-size: 1.2em;
+      font-weight: 300;
+      line-height: 1.3em;
+      margin-bottom: 20px;
+    }
+  }
+
+}
+
+.price{
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.title{
+  font-size: 60px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+
+a.button.pro-button{
+  margin-top: 20px;
+  padding: 10px ;
+  color: #fff;
+  font-size: 3rem;
+  background-color: #41a3ff;
+  border-color: #41a3ff;
+  border-bottom: 3px solid #007ef4;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  border-radius: 3px;
+}
+
+.pro-subheading{
+  color: $primary-color;
+  font-weight:bold;
+}
+
+.provideo-container {
+  background: #00c6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  display: flex; 
+  flex-direction:column;
+  align-items: center; 
+  justify-content: space-between;
+
+  color: white; 
+  align-content: center;
+  margin: 10px 0px; 
+  padding: 20px; 
+  ul li {
+    font-size: .7em;
+  }
+
+  a {
+    display: flex; 
+    flex-direction:column;
+    align-items: center; 
+    justify-content: space-between;
+
+    color: white; 
+    align-content: center;
+    margin: 10px 0px; 
+    padding: 20px; 
+
+    h1 {
+      color: white; 
+      font-weight: bold; 
+    }
+
+    h2 {
+      color: white; 
+      font-weight: bold; 
+    }
+
+  }
+
+    .inside-frame-pro{
+      background: $attn-color; 
+      color: white; 
+      border: 3px solid $attn-color; 
+      border-radius: 4px;
+      box-shadow: 5px 5px 2.5px #660014;
+      &:hover{
+        background: $attn-hover; 
+        color: white; 
+      }
+    }
+}
+
+div #play-glyph {
+  font-size: 2.2em;
+}
+

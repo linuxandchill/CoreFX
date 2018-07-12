@@ -1,0 +1,32 @@
+@import "variables.scss"; 
+
+
+.navbar {
+  background: white; 
+  border-bottom: 1px solid #e9f0f3;
+  box-shadow: 0 5px 5px -5px rgba(0,0,0,0.4);
+  margin-bottom: 0px !important;
+}
+
+.navbar-default .navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;  
+  color: $primary-color; 
+}
+
+.go-pro-btn {
+  color: $primary-color; 
+  background-color: white;   
+  font-weight: bold; 
+  border: 1px solid white; 
+  &:hover{
+    border: 1px solid $primary-color; 
+  background-color: white;   
+  color: $primary-color;   
+  &:active{
+    background: $primary-color;
+    color: white;
+  }
+
+  }
+}

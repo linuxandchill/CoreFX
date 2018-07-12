@@ -1,0 +1,47 @@
+<html>
+  <body>
+    <div class="pro-container">
+      <h1 class="text-center heading">Learn professional trading techniques. </h1>
+      <h3 class="text-center sub-heading">Keep up with the banks through <strong> video lessons </strong> and <strong> priority support</strong>. </h3>
+      <div class="container">
+        <div class="col-md-6 col-md-offset-3 col-xs-12">
+          <div class="pro-box">
+            <h1 class="text-center title"> CoreForex PRO</h1>
+            <h4 class=" text-center price">only <s style="color:#c30000">$59</s> <b>$19</b>/mo<br /><span style="color:#c30000">67% off</span> this month only!</h4>
+            <div class="text-center">
+<%= form_tag('/subscription_checkout', {method: :post, plan: @plan}) do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+  </article>
+  <input name="plan_id" type="hidden" value="<%= @plan[:id] %>"></inut>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                                        data-description="A month's subscription"
+                                                        data-amount="<%= (@plan[:amount]) %>"
+                                                        data-currency="<%= (@plan[:currency]) %>"
+                                                        data-email="<%= (current_user.email) %>"
+                                                        data-label="Join"
+                                                        ></script>
+<% end %>
+            </div>
+            <br>
+    <img class="img-responsive" src="https://media.giphy.com/media/11lBzrb4gB7tZK/giphy.gif" alt="Hi :)" />
+            <br>
+            <ul>
+              <li><b>Unlimited access</b> to text, videos, and content on the platform.</li>
+              <li><b>Exclusive first access</b> to new content released every month.</li>
+              <li>Bank tracking tool set for MT4.</li>
+              <li>No more <b>ads!</b></li>
+              <li>Learn advanced techniques to <b>limit risk & maximize profit.</b></li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<div class="container">
+
+  <form class="sub-form">
+
+    <% if cookies[:saved_subscriber] %>
+      Awesome, we'll add you shortly!
+    <% else %> 
+      <%= form_for @subscriber, :html => {:class => "form-horizontal center"} do |f| %> 
+
+        <div class="form-group">
+          <div class="col-md-6">
+            <%= f.email_field :email, class: "form-control", placeholder: "Please enter your email" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-8 col-md-offset-2">
+            <%= f.submit "Add me!", class: "btn btn-primary" %> 
+          </div>
+        </div>
+
+      <% end %> 
+    <% end %> 
+  </form>
+
+</div>

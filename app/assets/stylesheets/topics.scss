@@ -1,0 +1,62 @@
+@import "variables.scss"; 
+
+.card-flex{
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0 10px 0;
+}
+
+.topic-card{
+  width: 30%;
+  padding: 10px; 
+  background: white;
+  color: #000;
+  text-align: center;
+  border-radius: 2px;
+  border: 1px solid #e9f0f3;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around; 
+  &:hover{
+    background: $primary-color;
+    color: white; 
+  .pro-subheading{
+    font-weight:bold; 
+    color: white; 
+  }
+  }
+}
+
+@media (max-width: 400px) {
+  .card-flex
+  {
+    display: block;
+    .col {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
+  .topic-card{
+    width: 100%;
+  }
+}
+
+.get-started{
+  background: $attn-color; 
+  color: white; 
+  border: 3px solid $attn-color; 
+  border-radius: 4px;
+  box-shadow: 1px 1px .2px #660014;
+  &:hover {
+    border: 3px solid $attn-hover; 
+    background: $attn-hover; 
+    color: white; 
+  }
+  &:active{
+    border: 3px solid $attn-hover; 
+    background: $attn-hover; 
+    color: white; 
+  }
+  margin-top: 10px; 
+}
+

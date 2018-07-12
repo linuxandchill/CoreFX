@@ -1,0 +1,23 @@
+input[type=checkbox] {
+  margin-right: 15px;
+  .progress-check{
+    transform: scale(2.5);
+    cursor: pointer; 
+    margin-top: 15px;
+    margin-right: 15px;
+    height: 40px;
+    width: 40px;
+    background: light-grey; 
+  }
+  &:hover{
+    cursor: pointer; 
+  }
+}
+
+.progress-check{
+  margin-top: 15px;
+  margin-left: 15px;
+  height: 40px;
+  width: 40px;
+  background: light-grey; 
+}
